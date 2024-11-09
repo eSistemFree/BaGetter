@@ -21,6 +21,10 @@ namespace BaGetter;
 
 public class Startup
 {
+
+    
+
+
     private IConfiguration Configuration { get; }
 
     public Startup(IConfiguration configuration)
@@ -35,6 +39,10 @@ public class Startup
 
         services.AddBaGetterOptions<IISServerOptions>(nameof(IISServerOptions));
         services.AddBaGetterWebApplication(ConfigureBaGetterApplication);
+
+        services.AddHostedService<BagetService>();
+        services.AddWindowsService();
+
 
         // You can swap between implementations of subsystems like storage and search using BaGetter's configuration.
         // Each subsystem's implementation has a provider that reads the configuration to determine if it should be
